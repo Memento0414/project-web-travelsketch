@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="posts">
+
+	<!-- 캠핑장 불러오기 -->
+	<select id="findByCamp" resultType="data.Like">
+		SELECT LIKES.*
+		FROM LIKES
+		WHERE CAMP_ID = #{campId}
+	</select>
+
+	<!-- 게시글 N개 보기 -->
+	<select id="findByPostAtoB" resultType="data.Review"
+		parameterType="hashmap">
+	
+	SELECT *
+		FROM REVIEWS
+		ORDER BY WRITED DESC
+		LIMIT #{a}, #{b}
+	</select>
+	
+	<!-- 게시글 전체 갯수 가져오기 -->
+	<select id="findByPostAll" resultType="int">
+		SELECT COUNT(*) FROM REVIEWS
+	</select>
+
+	<!-- 자기가 좋아요 처리한 캠핑장 불러오기 -->
+	<select id="readByMyPost" resultType="data.Like"
+		parameterType="hashmap">
+		SELECT LIKES.* 
+			FROM LIKES
+			WHERE LIKER = #{id}
+		ORDER BY CAMP_NAME 
+	</select>
+
+	<!-- 캠핑장 좋아요 추가 -->
+	<insert id="likeCamp" parameterType="hashmap">
+		INSERT INTO LIKES(LIKER,
+		CAMP_NAME, CAMP_ID) VALUES(#{liker}, #{campName}, #{campId})
+	</insert>
+
+	<!-- 캠핑장 좋아요 삭제 -->
+	<delete id="unlikeCamp" parameterType="hashmap">
+		DELETE FROM LIKES WHERE
+		LIKER = #{liker} AND CAMP_NAME = #{campName} AND CAMP_ID = #{campId}
+	</delete>
+
+	<!-- 동일 캠핑장 좋아요 여부 검색 -->
+	<select id="likeCheck" parameterType="map" resultType="int">
+		select
+		count(*) from LIKES WHERE LIKER = #{liker} AND CAMP_NAME = #{campName}
+		AND CAMP_ID = #{campId}
+	</select>
+
+	<!-- 좋아요 된 캠핑장 전부 삭제 -->
+	<delete id="DeleteLikeCamp" parameterType="String">
+		DELETE FROM LIKES WHERE
+		LIKER = #{liker}
+	</delete>
+
+	<!-- 후기 쓰기 -->
+	<insert id="write" parameterType="Hashmap">
+		INSERT INTO REVIEWS(WRITER_NAME, IMG, TITLE, POST_BODY, WRITER_ID)
+		VALUES(#{writerName}, #{IMG} , #{title}, #{postBody}, #{writerId})
+	</insert>
+
+	<!-- 후기 수정하기 -->
+	<update id="modify" parameterType="Hashmap">
+		UPDATE REVIEWS
+		SET TITLE = #{title},
+		IMG = #{image}, POST_BODY=#{postBody}
+		WHERE POST_ID= #{postId}
+	</update>
+
+	<!-- 후기 삭제하기 -->
+	<delete id="deleteReview" parameterType="int">
+		DELETE FROM REVIEWS
+		WHERE
+		POST_ID=#{postId}
+	</delete>
+
+	<!-- 본인이 쓴 게시판후기 전체 삭제하기 -->
+	<delete id="deleteAllReview" parameterType="String">
+		DELETE FROM REVIEWS
+		WHERE
+		WRITER_ID=#{writerId}
+	</delete>
+
+	<!-- 후기 불러오기 -->
+	<select id="allPosts" resultType="data.Review">
+		SELECT * FROM REVIEWS ORDER
+		BY
+		WRITED DESC
+	</select>
+	
+	<!-- 자유게시판 특정 게시물 상세보기 확인하기 -->
+	<select id="findBypostId" resultType="data.Review"
+		parameterType="int">
+		SELECT * FROM REVIEWS
+		WHERE POST_ID=#{postId}
+	</select>
+
+	<!-- 캠핑장에 대한 후기 쓰기 -->
+	<insert id="campReviewCreate" parameterType="Hashmap">
+		INSERT INTO
+		CAMPREVIEWS(CAMP_ID, WRITER_ID, BODY, WRITER_NAME)
+		VALUES(#{campId}, #{writerId}, #{body}, #{writerName})
+	</insert>
+
+
+	<!-- 캠핑장 후기 불러오기 -->
+	<select id="findByCampReview" resultType="data.CampReview">
+		SELECT * FROM
+		CAMPREVIEWS
+		WHERE CAMP_ID=#{campId}
+		ORDER BY REVIEW_NUM DESC
+	</select>
+
+
+	<!-- 캠핑장 후기 삭제하기 -->
+	<delete id="deleteCampReview" parameterType="int">
+		DELETE FROM
+		CAMPREVIEWS
+		WHERE
+		REVIEW_NUM= #{reviewNum}
+	</delete>
+	
+	<!-- 캠핑장 후기 전체 삭제하기 -->
+	
+	<delete id="deleteAllCampReview" parameterType="String">
+		DELETE FROM
+		CAMPREVIEWS
+		WHERE
+		WRITER_ID=#{writerId}
+	</delete>
+</mapper>
