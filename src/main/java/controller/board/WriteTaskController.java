@@ -36,7 +36,7 @@ public class WriteTaskController extends HttpServlet {
 
 		// 업로드된 이미지를
 		String salt = String.valueOf(System.currentTimeMillis());
-		String path = req.getServletContext().getRealPath("/upload")+ File.pathSeparator + salt;
+		String path = req.getServletContext().getRealPath("/upload")+ File.separator + salt;
 
 		System.out.println("path = > " + path);
 

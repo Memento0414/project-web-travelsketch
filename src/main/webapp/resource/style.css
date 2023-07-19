@@ -27,8 +27,13 @@
 	font-style: normal;
 }
 
+* {
+	box-sizing: border-box;
+	margin: 0
+}
+
 body {
-	height: 100%;
+	min-height: 100%;
 }
 
 a {
@@ -37,19 +42,20 @@ a {
 }
 
 .detail-button{
+	font-size: 16px;
 	background-color: #02031B;
 	border: 1px solid #02031B;
-	border-radius: 4px;
+	border-radius: 7px;
 	color: white;
-	padding: 5px 55px;
+	padding: 10px 50px;
 	cursor: pointer;
 }
 
 .detail-search{
-	background-color: #F2E7D5;
+	background-color: #fff1c1;
 	color:black;
 	border-radius: 4px;
-	border: 0.6px solid white;
+	border: 0.6px solid #fff1c1;
 	cursor: pointer;
 	padding-left:3px;
 	font-size: 15px;
@@ -153,6 +159,7 @@ detail-search:hover{
 	padding-top: 3em;
 }
 
+
 .sign-up-main1 {
 	display: flex;
 	justify-content: center;
@@ -197,12 +204,13 @@ detail-search:hover{
 }
 
 .back-img {
-	background-image: url("/resource/image/backGround.jpg");
-	background-size: cover;
-	display: flex;
-	justify-content: center;
-	height: 65rem;
-	padding-top: 1em;
+	background-image: url("/resource/image/backGround1.jpg");
+	background-size: 1950px 550px;
+	background-position:center top;
+	background-repeat:no-repeat;
+	padding-top: 0.5em;
+	width: 100%;
+	height: 150px;
 }
 
 .search div {
@@ -210,7 +218,6 @@ detail-search:hover{
 }
 
 .detail-search-position{
-	display: flex;
     align-items: start;
     height: 95%;
     padding: 5px;
@@ -224,7 +231,6 @@ detail-search:hover{
 	background-color: rgba(255, 241, 193, 0.9);
 	width: 25%;
 	height: 25%;
-	display: flex;
 	align-items: center;
 	background-color: rgba(255, 241, 193, 0.9);
 }
@@ -234,16 +240,21 @@ detail-search:hover{
 }
 
 .search-box-position {
-	width: 45%;
+	width: 27%;
 	display: flex;
-	align-items: center;
-	margin-top: 20em;
+	padding: 10px;
+	height: 225px;
+	flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-around;
 }
 
 .search-inside-range {
 	width: 70%;
 	display: flex;
 	align-items: center;
+	height: 250px;
+	
 }
 
 .search-box-inside {
@@ -254,6 +265,7 @@ detail-search:hover{
 	align-items: center;
 	margin-left: 30px;
 	gap: 10px;
+	
 }
 
 .search-position {
@@ -531,10 +543,9 @@ a:hover {
 
 .belt {
 	background-color: #FFF1C1;
-	width: 100%;
-	height: 350px;
-	position: absolute;
-	bottom: -47%;
+	height: 270px;
+	
+	
 }
 
 .back {
@@ -659,7 +670,7 @@ a:hover {
 	display: inline-block;
 	text-align: center;
 	vertical-align: top;
-	margin: 0 20px 20px 0;
+	margin: 0 20px 15px 0;
 }
 
 /*-------------상세 검색의 CSS ------------------------------*/
@@ -691,7 +702,7 @@ a:hover {
 	padding: 10px 20px;
 	text-align: center;
 	width: 40%;
-	height: 53%;
+	height: 45%;
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px
 		rgba(0, 0, 0, 0.23);
 	border-radius: 10px;
@@ -708,38 +719,25 @@ a:hover {
 }
 
 .ds-container {
-	width: 650px;
+	padding-top: 1em;
 	display: flex;
 	align-items: center;
+	flex-direction: row;
 }	
 
 .ds-list-title {
-	display: flex;
-	width: 73px;
+	flex: 1;
 	font-weight: bold;
-}
-
-.ds-list-title1 {
-	display: flex;
 	width: 166px;
-	font-weight: bold;
-}
 
-.ds-list-title2 {
-	display: flex;
-	width: 113px;
-	font-weight: bold;
-}
-
-.ds-list-title3 {
-	display: flex;
-	width: 112px;
-	font-weight: bold;
 }
 
 .ds-list-rage {
-	display: flex;
+	
+	flex:4;
+	
 }
+
 
 ul {
 	display: flex;
@@ -752,15 +750,15 @@ li{
 	list-style: none;	
 }
 label {
-	
 	padding-inline: 4px;
 }
 
 /*box 내부 검색, 초기화 버튼 제어*/
 .btn-ctr {
 	display: flex;
-	justify-content: space-between;
-	width: 53%;
 	padding-left:35%;
-	padding-top:1.5em;
+	padding-top:2em;
+	justify-content: flex-end;
+    align-items: center;
+    margin: 4px;
 }
