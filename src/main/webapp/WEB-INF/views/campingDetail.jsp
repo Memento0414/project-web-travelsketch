@@ -383,7 +383,7 @@ th {
 
 			<!-- 지도 관련 부분 -->
 			<c:if test="${!empty camp.addr1}">
-				<script type="text/javascript"
+				<script type="text/javascript"   
 					src="//dapi.kakao.com/v2/maps/sdk.js?appkey=851c4348d94e439383c8c27e72267740"></script>
 				<script>
 	let pos = new kakao.maps.LatLng(${camp.mapY}, ${camp.mapX});	

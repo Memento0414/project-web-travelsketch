@@ -249,6 +249,18 @@ detail-search:hover{
     justify-content: space-around;
 }
 
+.defualt-search-box-position {
+	width: 60%;
+	display: flex;
+	padding: 10px;
+	height: 225px;
+	flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-around;
+}
+
+
+
 .search-inside-range {
 	width: 70%;
 	display: flex;
